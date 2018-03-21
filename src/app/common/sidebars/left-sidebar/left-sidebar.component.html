@@ -1,0 +1,154 @@
+
+<!-- Left Sidebar -->
+<aside id="leftsidebar" class="sidebar">
+	<!-- User Info -->
+	<div class="user-info">
+		<div class="image">
+			<img src="./assets/images/user.png" width="48" height="48" alt="User" />
+		</div>
+		<div class="info-container">
+			<div class="name" data-toggle="dropdown" aria-haspopup="true"
+				aria-expanded="false">John Doe</div>
+			<div class="email">john.doe@example.com</div>
+			<div class="btn-group user-helper-dropdown">
+				<i class="material-icons" data-toggle="dropdown"
+					aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+				<ul class="dropdown-menu pull-right">
+					<li><a href="javascript:void(0);"><i
+							class="material-icons">person</i>Profile</a></li>
+					<li role="seperator" class="divider"></li>
+					<li><a href="javascript:void(0);"><i
+							class="material-icons">group</i>Followers</a></li>
+					<li><a href="javascript:void(0);"><i
+							class="material-icons">shopping_cart</i>Sales</a></li>
+					<li><a href="javascript:void(0);"><i
+							class="material-icons">favorite</i>Likes</a></li>
+					<li role="seperator" class="divider"></li>
+					<li><a href="javascript:void(0);"><i
+							class="material-icons">input</i>Sign Out</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- #User Info -->
+	<!-- Menu -->
+	<div class="menu">
+		<ul class="list">
+			<li class="header">MAIN NAVIGATION</li>
+			<li><a [routerLink]="['']"> <i class="material-icons">home</i>
+					<span>Home</span>
+			</a></li>
+			<li><a href="javascript:void(0);" class="menu-toggle"> <i
+					class="material-icons">swap_calls</i> <span>Schools</span>
+			</a>
+				<ul class="ml-menu">
+					<li><a [routerLink]="['category/add-new']">Add New</a></li>
+					<li><a [routerLink]="['category/add-new']">View All</a></li>
+				</ul></li>
+				
+			<li><a href="javascript:void(0);" class="menu-toggle"> <i
+					class="material-icons">swap_calls</i> <span>Office Desk</span>
+			</a>
+				<ul class="ml-menu">
+					<li><a [routerLink]="['category/add-new']">My Account</a></li>
+					<li><a [routerLink]="['category/add-new']">Support</a></li>
+				</ul></li>
+				
+			<li><a href="javascript:void(0);" class="menu-toggle"> <i
+					class="material-icons">swap_calls</i> <span>Money Control</span>
+			</a>
+				<ul class="ml-menu">
+					<li><a [routerLink]="['category/add-new']">Add Plan</a></li>
+					<li><a [routerLink]="['category/add-new']">Payment Plans</a></li>
+					<li><a [routerLink]="['category/add-new']">Payment History</a></li>
+					<li><a href="javascript:void(0);" class="menu-toggle"> <i
+							class="material-icons">swap_calls</i>Payment Reports
+					</a>
+						<ul class="ml-menu">
+							<li><a [routerLink]="['category/add-new']">Annual Report</a></li>
+							<li><a [routerLink]="['category/add-new']">Monthly
+									Report</a></li>
+						</ul></li>
+					<li><a href="javascript:void(0);" class="menu-toggle"> <i
+							class="material-icons">swap_calls</i>Payment Modules
+					</a>
+						<ul class="ml-menu">
+							<li><a [routerLink]="['category/add-new']">Paypal</a></li>
+							<li><a [routerLink]="['category/add-new']">Paytm</a></li>
+							<li><a [routerLink]="['category/add-new']">PayU Money</a></li>
+							<li><a [routerLink]="['category/add-new']">Bank Transfer</a></li>
+						</ul></li>
+				</ul></li>
+				
+			<li><a href="javascript:void(0);" class="menu-toggle"> <i
+					class="material-icons">swap_calls</i> <span>Configuration</span>
+			</a>
+				<ul class="ml-menu">
+					<li><a [routerLink]="['category/add-new']">Role Manager</a></li>
+					<li><a [routerLink]="['category/add-new']">Menu Manager</a></li>
+				</ul></li>
+				
+			<li><a href="javascript:void(0);" class="menu-toggle"> <i
+					class="material-icons">swap_calls</i> <span>Branches</span>
+			</a>
+				<ul class="ml-menu">
+					<li><a [routerLink]="['category/add-new']">Add New</a></li>
+					<li><a [routerLink]="['category/add-new']">View All</a></li>
+				</ul></li>
+				
+			<li><a href="javascript:void(0);" class="menu-toggle"> <i
+					class="material-icons">swap_calls</i> <span>System Setup</span>
+			</a>
+				<ul class="ml-menu">
+					<li><a [routerLink]="['category/view-all-categories']">Categories</a></li>
+					<li><a [routerLink]="['category/add-new']">Education
+							Streams</a></li>
+					<li><a [routerLink]="['category/add-new']">Education
+							Mediums</a></li>
+					<li><a [routerLink]="['category/add-new']">Study Sessions</a></li>
+					<li><a [routerLink]="['category/add-new']">Standards</a></li>
+					<li><a [routerLink]="['category/add-new']">Sections</a></li>
+				</ul></li>
+				
+			<li><a href="javascript:void(0);" class="menu-toggle"> <i
+					class="material-icons">swap_calls</i> <span>Attendence</span>
+			</a>
+				<ul class="ml-menu">
+					<li><a href="javascript:void(0);" class="menu-toggle"> <i
+							class="material-icons">swap_calls</i> <span>Employies</span>
+					</a>
+						<ul class="ml-menu">
+							<li><a [routerLink]="['category/add-new']">Fill
+									Attendence</a></li>
+							<li><a [routerLink]="['category/add-new']">Leave
+									Applications</a></li>
+							<li><a [routerLink]="['category/add-new']">View
+									Attendence</a></li>
+						</ul></li>
+					<li><a href="javascript:void(0);" class="menu-toggle"> <i
+							class="material-icons">swap_calls</i> <span>Students</span>
+					</a>
+						<ul class="ml-menu">
+							<li><a [routerLink]="['category/add-new']">Fill
+									Attendence</a></li>
+							<li><a [routerLink]="['category/add-new']">Leave
+									Applications</a></li>
+							<li><a [routerLink]="['category/add-new']">View
+									Attendence</a></li>
+						</ul></li>
+				</ul></li>
+		</ul>
+	</div>
+	<!-- #Menu -->
+	<!-- Footer -->
+	<div class="legal">
+		<div class="copyright">
+			&copy; 2017 - 2018 <a href="javascript:void(0);">Mentation - SMS</a>.
+		</div>
+		<div class="version">
+			<b>Version: </b> 1.0.5
+		</div>
+	</div>
+	<!-- #Footer -->
+</aside>
+<!-- #END# Left Sidebar -->

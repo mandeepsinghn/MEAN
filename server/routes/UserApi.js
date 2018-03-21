@@ -36,5 +36,31 @@ var loadRoutes=function (db,router,crypto) {
 
         });
     });
+
+    router.get('/users/view/:id\.:ext?', function (req, res) {
+        db.loadModel('UserInfo');
+        db.loadModel('User').findOne({},function (err,doc) {
+            res.status(200).json(doc);
+        }).populate('userInfo')
+            .exec().then(function (doc) {
+        })
+    });
+    router.get('/users/edit/:id\.:ext?', function (req, res) {
+        db.loadModel('UserInfo');
+        db.loadModel('User').findOne({},function (err,doc) {
+            res.status(200).json(doc);
+        }).populate('userInfo')
+            .exec().then(function (doc) {
+        })
+    });
+    router.get('/users/delete/:id\.:ext?', function (req, res) {
+        db.loadModel('UserInfo');
+        db.loadModel('User').delegate({})
+        db.loadModel('User').find({},function (err,doc) {
+            res.status(200).json(doc);
+        }).populate('userInfo')
+            .exec().then(function (doc) {
+        })
+    });
 }
 module.exports.loadRoutes=loadRoutes;
