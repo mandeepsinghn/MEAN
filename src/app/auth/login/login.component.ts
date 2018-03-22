@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     }
   }
   public successRedirect() {
-      this.authService.isLoggedIn=true;
+      this.authService.isLoggedIn = true;
       this.route.navigate(['cpanel']);
   }
 
