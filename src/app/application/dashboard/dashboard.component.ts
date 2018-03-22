@@ -30,8 +30,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     $.AdminBSB.rightSideBar.activate();
     $.AdminBSB.navbar.activate();
     $.AdminBSB.dropdownMenu.activate();
-    // $.AdminBSB.input.activate();
-    // $.AdminBSB.select.activate();
     $.AdminBSB.search.activate();
 
     if ($('.navbar-right .dropdown-menu .body .slimScrollDiv').size() === 0) {
