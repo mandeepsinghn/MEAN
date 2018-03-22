@@ -25,20 +25,13 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       $(val).next().slideToggle(0);
     });
 
-    // When page load
-    //    $.each($('.menu .list li.active'), function(i, val) {
-    //      $(val).find('a:eq(0)').addClass('toggled').next().show();
-    //    });
-    //
-    //    Waves.attach('.menu .list a', ['waves-block']);
-    //    Waves.init();
     $.AdminBSB.browser.activate();
     $.AdminBSB.leftSideBar.activate();
     $.AdminBSB.rightSideBar.activate();
     $.AdminBSB.navbar.activate();
     $.AdminBSB.dropdownMenu.activate();
-    $.AdminBSB.input.activate();
-    $.AdminBSB.select.activate();
+    // $.AdminBSB.input.activate();
+    // $.AdminBSB.select.activate();
     $.AdminBSB.search.activate();
 
     if ($('.navbar-right .dropdown-menu .body .slimScrollDiv').size() === 0) {

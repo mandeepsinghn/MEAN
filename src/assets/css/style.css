@@ -1,5 +1,7 @@
 /* Navbar ====================================== */
 @import url(./materialize.css);
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 .navbar {
   font-family: "Roboto", sans-serif;
   -webkit-border-radius: 0;
@@ -8039,4 +8041,6 @@ html.ie11 .dropdown-menu ul.menu li a {
 
 html.ie11 .bs-searchbox .form-control {
   width: 90%; }
-
+.mat-form-field{
+    width: 100%;
+}

@@ -10,6 +10,20 @@ import { CookieService } from 'angular2-cookie/core';
 import { AddCategoryComponent } from './categories/create/add-category/add-category.component';
 import { ViewAllCategoriesComponent } from './categories/read/view-all-categories/view-all-categories.component';
 
+import {
+    MatButtonModule,
+    MatMenuModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatCardModule,
+    MatSidenavModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTooltipModule,
+    MatCheckboxModule
+} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -20,8 +34,32 @@ import { ViewAllCategoriesComponent } from './categories/read/view-all-categorie
   ],
   imports: [
     BrowserModule,
-    ApplicationRoutingModule
+    ApplicationRoutingModule,
+      MatButtonModule,
+      MatMenuModule,
+      MatToolbarModule,
+      MatIconModule,
+      MatCardModule,
+      MatSidenavModule,
+      MatFormFieldModule,
+      MatInputModule,
+      MatTooltipModule,
+      BrowserAnimationsModule,
+      MatCheckboxModule
   ],
+    exports: [
+        MatButtonModule,
+        MatMenuModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatCardModule,
+        MatSidenavModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatTooltipModule,
+        BrowserAnimationsModule,
+        MatCheckboxModule
+    ],
   providers: [
     AuthService,
     AuthGuard,

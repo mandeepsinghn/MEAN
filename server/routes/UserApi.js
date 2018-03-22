@@ -11,7 +11,6 @@ var loadRoutes=function (db,router,crypto) {
     router.get('/users/add\.:ext?', function (req, res) {
         var userModel = db.loadModel('User');
         var userInfoModel = db.loadModel('UserInfo');
-
         const newUser = new userModel({
             username: 'mandeepsinghn',
             password: crypto.encrypt('mastertrack'),
