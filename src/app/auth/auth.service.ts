@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {LoginComponent} from './login/login.component';
 
 @Injectable()
 export class AuthService {
@@ -8,11 +9,13 @@ export class AuthService {
 
   constructor(private http: HttpClient) {
         this.isLoggedIn = false;
-        this.http.get('/api/users.json', {
-            responseType: 'json'
-        }).subscribe(function (data) {
-            console.log(data);
-        });
+   }
+   public login(username: String, password: String, loginComp: LoginComponent) {
+      this.http.get('/api/users.json', {
+           responseType: 'json'
+       }).subscribe(function (data) {
+           loginComp.successRedirect();
+       });
    }
 
 }

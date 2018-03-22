@@ -22,10 +22,13 @@ export class LoginComponent implements OnInit, AfterViewInit {
   stopDefaultSubmit() { return false; }
   submitLogin() {
     if ($('#sign_in').valid()) {
-      this.authService.isLoggedIn = true;
-      this.cookieService.put('putting', 'putty');
-      this.route.navigate(['cpanel']);
+      this.authService.login('username', 'password', this);
+      // this.cookieService.put('putting', 'putty');
     }
+  }
+  public successRedirect() {
+      this.authService.isLoggedIn=true;
+      this.route.navigate(['cpanel']);
   }
 
 }
