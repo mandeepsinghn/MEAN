@@ -2,6 +2,7 @@ import { AuthService } from '../auth.service';
 import {Component, OnInit, AfterViewInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'angular2-cookie/core';
+
 declare var $: any;
 
 @Component({

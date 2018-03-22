@@ -1,16 +1,19 @@
-var loadRoutes=function (db,router,crypto) {
+let loadRoutes = function (db, router, crypto) {
     // Get all posts
     router.get('/users\.:ext?', function (req, res) {
         db.loadModel('UserInfo');
-        db.loadModel('User').find({},function (err,doc) {
+        db.loadModel('User').find({}, function (err, doc) {
+            console.log(doc);
             res.status(200).json(doc);
         }).populate('userInfo')
             .exec().then(function (doc) {
-        })
+        });
+        console.log('working');
     });
     router.get('/users/add\.:ext?', function (req, res) {
-        var userModel = db.loadModel('User');
-        var userInfoModel = db.loadModel('UserInfo');
+        const userModel = db.loadModel('User');
+        const userInfoModel = db.loadModel('UserInfo');
+
         const newUser = new userModel({
             username: 'mandeepsinghn',
             password: crypto.encrypt('mastertrack'),
@@ -24,9 +27,9 @@ var loadRoutes=function (db,router,crypto) {
 
         userModel.create(newUser, function (err, obj) {
             userInfo.user = obj._id;
-            userInfoModel.create(userInfo, function (err, info) {
+            userInfoModel.create(userInfo, function (error, info) {
                 obj.userInfo = info._id;
-                obj.save(function (err) {
+                obj.save(function (saveError, object) {
                     res.status(200).json({
                         status: 'success'
                     });
@@ -38,28 +41,28 @@ var loadRoutes=function (db,router,crypto) {
 
     router.get('/users/view/:id\.:ext?', function (req, res) {
         db.loadModel('UserInfo');
-        db.loadModel('User').findOne({},function (err,doc) {
+        db.loadModel('User').findOne({}, function (err, doc) {
             res.status(200).json(doc);
         }).populate('userInfo')
             .exec().then(function (doc) {
-        })
+        });
     });
     router.get('/users/edit/:id\.:ext?', function (req, res) {
         db.loadModel('UserInfo');
-        db.loadModel('User').findOne({},function (err,doc) {
+        db.loadModel('User').findOne({}, function (err, doc) {
             res.status(200).json(doc);
         }).populate('userInfo')
             .exec().then(function (doc) {
-        })
+        });
     });
     router.get('/users/delete/:id\.:ext?', function (req, res) {
         db.loadModel('UserInfo');
-        db.loadModel('User').delegate({})
-        db.loadModel('User').find({},function (err,doc) {
+        db.loadModel('User').delegate({});
+        db.loadModel('User').find({}, function (err, doc) {
             res.status(200).json(doc);
         }).populate('userInfo')
             .exec().then(function (doc) {
-        })
+        });
     });
-}
-module.exports.loadRoutes=loadRoutes;
+};
+module.exports.loadRoutes = loadRoutes;

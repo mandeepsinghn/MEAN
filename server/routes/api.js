@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../database/MongoConnection');
 const crypto=require('../library/Security');
-const userApi=require('./UserApi')
+const userApi=require('./UserApi');
 
 /* GET api listing. */
 router.get('/', function (req, res) {
