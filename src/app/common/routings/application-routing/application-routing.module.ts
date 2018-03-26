@@ -10,12 +10,17 @@ import {RightSidebarComponent} from '../../sidebars/right-sidebar/right-sidebar.
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
+import { ProfileComponent } from '../../../user/profile/profile.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'cpanel'},
   {
     path: 'cpanel', component: DashboardComponent,
     children: [
+      {
+          path: 'user/profile',
+          component: ProfileComponent
+      },
       {
         path: 'category/add-new',
         component: AddCategoryComponent

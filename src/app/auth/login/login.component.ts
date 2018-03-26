@@ -20,15 +20,17 @@ export class LoginComponent implements OnInit, AfterViewInit {
     $('body').addClass('login-page');
   }
   stopDefaultSubmit() { return false; }
-  submitLogin() {
+  submitLogin(username: string, password: string) {
     if ($('#sign_in').valid()) {
-      this.authService.login('username', 'password', this);
+      this.authService.login(username, password, this);
       // this.cookieService.put('putting', 'putty');
     }
   }
-  public successRedirect() {
-      this.authService.isLoggedIn = true;
-      this.route.navigate(['cpanel']);
+  public successRedirect(  data ) {
+      if ( data ) {
+          this.authService.isLoggedIn = true;
+          this.cookieService.put('loggedUser', data._id);
+          this.route.navigate(['cpanel']);
+      }
   }
-
 }

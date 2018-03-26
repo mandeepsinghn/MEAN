@@ -1,4 +1,4 @@
-let loadRoutes = function (db, router, crypto) {
+var loadRoutes = function (db, router, crypto) {
     // Get all posts
     router.get('/users\.:ext?', function (req, res) {
         db.loadModel('UserInfo');
@@ -38,9 +38,17 @@ let loadRoutes = function (db, router, crypto) {
 
         });
     });
-
+    router.post('/users/login\.:ext?', function (req, res) {
+        db.loadModel('UserInfo');
+        db.loadModel('User').findOne({username:req.body.username, password:crypto.encrypt(req.body.password)}, function (err, doc) {
+            res.status(200).json(doc);
+        }).populate('userInfo')
+            .exec().then(function (doc) {
+        });
+    });
     router.get('/users/view/:id\.:ext?', function (req, res) {
         db.loadModel('UserInfo');
+        console.log(req);
         db.loadModel('User').findOne({}, function (err, doc) {
             res.status(200).json(doc);
         }).populate('userInfo')

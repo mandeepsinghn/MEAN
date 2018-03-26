@@ -19,13 +19,15 @@ import {
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
+import { ProfileComponent } from './user/profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
     AddCategoryComponent,
-    ViewAllCategoriesComponent
+    ViewAllCategoriesComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
