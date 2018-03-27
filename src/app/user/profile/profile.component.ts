@@ -1,6 +1,7 @@
 import { UserService } from '../user.service';
 import {Component, OnInit, AfterViewInit} from '@angular/core';
 import { CookieService } from 'angular2-cookie/core';
+import { Router } from '@angular/router';
 declare var $: any;
 
 @Component({
@@ -9,16 +10,14 @@ declare var $: any;
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit, AfterViewInit {
-  user: Array<string>;
-  public username: string;
-  constructor(private userService: UserService, private cookieService: CookieService) {
+  public user: Array<any>;
+    public userInfo: Array<any>;
+  constructor(private userService: UserService, private cookieService: CookieService, private route: Router) {
       const isLogged = this.cookieService.get('loggedUser');
       this.userService.getLoggedUserData( isLogged, this );
-      this.username = 'admin';
   }
 
   ngOnInit() {
-      this.username = 'admin';
   }
   ngAfterViewInit() {
         $('#form_validation').validate({
@@ -44,8 +43,20 @@ export class ProfileComponent implements OnInit, AfterViewInit {
     public setData( data ) {
         if ( data ) {
             console.log(data);
-            this.username = 'admin';
+            this.user = data;
+            this.userInfo = data.userInfo;
             return data;
+        }
+        return false;
+    }
+    public saveProfile(event) {
+        console.log(this.user);
+        this.userService.updateUserData( this.user, this.userInfo, this );
+    }
+    public updateData(data) {
+        if ( data ) {
+            console.log(data);
+            this.route.navigate(['cpanel/user/profile']);
         }
         return false;
     }

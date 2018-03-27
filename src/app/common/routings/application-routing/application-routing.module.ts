@@ -11,6 +11,8 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import { ProfileComponent } from '../../../user/profile/profile.component';
+import {AddSchoolComponent} from '../../../master/school/create/add-school/add-school.component';
+import { ViewAllSchoolsComponent } from '../../../master/school/read/view-all-schools/view-all-schools.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'cpanel'},
@@ -20,6 +22,14 @@ const routes: Routes = [
       {
           path: 'user/profile',
           component: ProfileComponent
+      },
+      {
+          path: 'master/school/add-new',
+          component: AddSchoolComponent
+      },
+      {
+          path: 'master/school/view-all-schools',
+          component: ViewAllSchoolsComponent
       },
       {
         path: 'category/add-new',

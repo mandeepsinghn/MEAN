@@ -1,14 +1,18 @@
 'use strict';
 const mongoose = require('mongoose');
-const userSchema = new mongoose.Schema({
+const schoolSchema = new mongoose.Schema({
         username: String,
         password: String,
         isActive: Boolean,
-        userInfo: {type: mongoose.Schema.ObjectId, ref: 'UserInfo'},
+        name: String,
+        address: String,
+        lattitude: String,
+        Longitude: String,
+        startDate: String,
+        endDate: String,
         createdOn: String,
         createdBy: String,
-        modifiedOn: String,
-        modifiedBy: String
+        modifiedOn: String
     },
     {
         minimize: false,
@@ -16,5 +20,5 @@ const userSchema = new mongoose.Schema({
     });
 
 module.exports = {
-    'model': mongoose.model('User', userSchema)
+    'model': mongoose.model('School', schoolSchema)
 }

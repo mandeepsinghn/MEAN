@@ -23,30 +23,30 @@
         </ul>-->
       </div>
       <div class="body">
-        <form id="form_validation" method="POST">
+        <form id="form_validation" method="POST" (ngSubmit)="saveProfile($event)">
           <div class="form-group form-float">
             <mat-input-container>
-              <input matInput="" name="username" [(ngModel)]="username"  required placeholder="Username" >
+              <input matInput="" name="username" [(ngModel)]="user.username"  required placeholder="Username" >
             </mat-input-container>
           </div>
           <div class="form-group form-float">
             <mat-input-container>
-              <input matInput="" name="firstName" ng-model="user.userinfo.firstName" required placeholder="First Name" >
+              <input matInput="" name="firstName" [(ngModel)]="userInfo.firstName" required placeholder="First Name" >
             </mat-input-container>
           </div>
           <div class="form-group form-float">
             <mat-input-container>
-              <input matInput="" name="lastName" ng-model="user.userinfo.lastName" required placeholder="Last Name" >
+              <input matInput="" name="lastName" [(ngModel)]="userInfo.lastName"  placeholder="Last Name" >
             </mat-input-container>
           </div>
           <div class="form-group form-float">
             <mat-input-container>
-              <input matInput="" name="middleName" ng-model="user.userinfo.middleName" required placeholder="Middle Name" >
+              <input matInput="" name="middleName" [(ngModel)]="userInfo.middleName"  placeholder="Middle Name" >
             </mat-input-container>
           </div>
           <div class="form-group form-float">
             <mat-input-container>
-              <input matInput="" type="email" name="email" ng-model="user.userinfo.email" required placeholder="Email" >
+              <input matInput="" type="email" name="email" [(ngModel)]="userInfo.email" required placeholder="Email" >
             </mat-input-container>
           </div>
 

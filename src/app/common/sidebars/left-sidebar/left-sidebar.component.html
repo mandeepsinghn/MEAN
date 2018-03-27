@@ -38,13 +38,19 @@
 					<span>Home</span>
 			</a></li>
 			<li><a href="javascript:void(0);" class="menu-toggle"> <i
-					class="material-icons">swap_calls</i> <span>Schools</span>
+					class="material-icons">swap_calls</i> <span>Master</span>
 			</a>
 				<ul class="ml-menu">
-					<li><a [routerLink]="['category/add-new']">Add New</a></li>
-					<li><a [routerLink]="['category/add-new']">View All</a></li>
-				</ul></li>
-				
+					<li><a href="javascript:void(0);" class="menu-toggle"> <i
+							class="material-icons">swap_calls</i> <span>Schools</span>
+					</a>
+						<ul class="ml-menu">
+							<li><a [routerLink]="['master/school/add-new']">Add New</a></li>
+							<li><a [routerLink]="['master/school/view-all-schools']">View All</a></li>
+						</ul>
+					</li>
+				</ul>
+			</li>
 			<li><a href="javascript:void(0);" class="menu-toggle"> <i
 					class="material-icons">swap_calls</i> <span>Office Desk</span>
 			</a>

@@ -7,13 +7,15 @@ import {CookieService} from 'angular2-cookie/core';
 export class AuthService {
 
   public isLoggedIn: any;
-
+  public loggedId: any;
   constructor(private http: HttpClient, private cookieService: CookieService) {
       const isLogged = this.cookieService.get('loggedUser');
       if (isLogged) {
           this.isLoggedIn = true;
+          this.loggedId = isLogged;
       } else {
           this.isLoggedIn = false;
+          this.loggedId = false;
       }
    }
    public login(username: String, password: String, loginComp: LoginComponent) {
