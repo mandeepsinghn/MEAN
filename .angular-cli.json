@@ -23,17 +23,14 @@
         "./assets/plugins/node-waves/waves.css",
         "./assets/plugins/animate-css/animate.css",
         "./assets/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css",
-        "./assets/plugins/sweetalert/sweetalert.css",
         "./assets/css/style.css",
         "./assets/css/themes/all-themes.css"
       ],
       "scripts": [
         "./assets/plugins/jquery/jquery.min.js",
         "./assets/plugins/bootstrap/js/bootstrap.js",
-        "./assets/plugins/bootstrap-select/js/bootstrap-select.js",
         "./assets/plugins/jquery-slimscroll/jquery.slimscroll.js",
         "./assets/plugins/node-waves/waves.js",
-        "./assets/plugins/sweetalert/sweetalert.min.js",
         "./assets/plugins/jquery-datatable/jquery.dataTables.js",
         "./assets/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js",
         "./assets/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js",

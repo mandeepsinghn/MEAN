@@ -12,35 +12,28 @@ import { ViewAllCategoriesComponent } from './categories/read/view-all-categorie
 
 import {
     MatButtonModule,
-    MatMenuModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatCardModule,
-    MatSidenavModule,
     MatFormFieldModule,
     MatInputModule,
     MatTooltipModule,
     MatCheckboxModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
+import {HttpClientModule} from '@angular/common/http';
+import { ProfileComponent } from './user/profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
     AddCategoryComponent,
-    ViewAllCategoriesComponent
+    ViewAllCategoriesComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
+      HttpClientModule,
     ApplicationRoutingModule,
       MatButtonModule,
-      MatMenuModule,
-      MatToolbarModule,
-      MatIconModule,
-      MatCardModule,
-      MatSidenavModule,
       MatFormFieldModule,
       MatInputModule,
       MatTooltipModule,
@@ -49,11 +42,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
   ],
     exports: [
         MatButtonModule,
-        MatMenuModule,
-        MatToolbarModule,
-        MatIconModule,
-        MatCardModule,
-        MatSidenavModule,
         MatFormFieldModule,
         MatInputModule,
         MatTooltipModule,
