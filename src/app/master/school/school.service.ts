@@ -1,25 +1,32 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { AuthService } from '../../auth/auth.service';
-import { ViewAllSchoolsComponent } from './read/view-all-schools/view-all-schools.component';
-import { AddSchoolComponent } from './create/add-school/add-school.component';
 @Injectable()
 export class SchoolService {
-
+    public schools: any;
+    public school: any;
     constructor(private http: HttpClient, private authService: AuthService) {
     }
-    public getSchools(viewSchools: ViewAllSchoolsComponent) {
+    public getSchools() {
+        const obj = this;
         this.http.post('/api/schools.json/', {
             responseType: 'json'
         }).subscribe(function (data) {
-            viewSchools.setData(data);
+            obj.setData(data, 'schools');
         });
     }
-    public getSchool(id: string, addSchool: AddSchoolComponent) {
+    public setData(data, stData: string) {
+        this[stData] = data;
+    }
+    public getSchool(id: string) {
+        const obj = this;
         this.http.get('/api/schools.json/' + id, {
             responseType: 'json'
         }).subscribe(function (data) {
-            addSchool.setData(data);
+            obj.setData(data, 'school');
         });
+    }
+    public save(data) {
+        console.log(data);
     }
 }

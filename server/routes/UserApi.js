@@ -55,9 +55,9 @@ var loadRoutes = function (db, router, crypto) {
             .exec().then(function (doc) {
         });
     });
-    router.post('/users/getDetail\.:ext?', function (req, res) {
+    router.get('/users/getDetail\.:ext/:id', function (req, res) {
         db.loadModel('UserInfo');
-        db.loadModel('User').findOne({_id : req.body._id}, 'username isActive modifiedOn modifiedBy createdOn createdBy userInfo', function (err, doc) {
+        db.loadModel('User').findOne({_id : req.params.id}, 'username isActive modifiedOn modifiedBy createdOn createdBy userInfo', function (err, doc) {
             // delete doc.password;
             res.status(200).json(doc);
         }).populate('userInfo')

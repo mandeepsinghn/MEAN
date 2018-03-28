@@ -15,7 +15,9 @@ import {
     MatFormFieldModule,
     MatInputModule,
     MatTooltipModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
@@ -23,6 +25,7 @@ import { ProfileComponent } from './user/profile/profile.component';
 import { UserService } from './user/user.service';
 import { ViewAllSchoolsComponent } from './master/school/read/view-all-schools/view-all-schools.component';
 import { AddSchoolComponent } from './master/school/create/add-school/add-school.component';
+import {AgmCoreModule} from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,7 @@ import { AddSchoolComponent } from './master/school/create/add-school/add-school
     AddSchoolComponent
   ],
   imports: [
-    BrowserModule,
+      BrowserModule,
       HttpClientModule,
       ApplicationRoutingModule,
       MatButtonModule,
@@ -44,7 +47,13 @@ import { AddSchoolComponent } from './master/school/create/add-school/add-school
       MatTooltipModule,
       BrowserAnimationsModule,
       MatCheckboxModule,
-      FormsModule
+      MatDatepickerModule,
+      MatNativeDateModule,
+      FormsModule,
+      AgmCoreModule.forRoot({
+          apiKey: 'AIzaSyCewgd_uWWVfRe8OurbMguxE3BABXONUfg',
+          libraries: [ 'places' ]
+      }),
   ],
    exports: [
         MatButtonModule,
@@ -52,7 +61,9 @@ import { AddSchoolComponent } from './master/school/create/add-school/add-school
         MatInputModule,
         MatTooltipModule,
         BrowserAnimationsModule,
-        MatCheckboxModule
+        MatCheckboxModule,
+        MatDatepickerModule,
+        MatNativeDateModule
    ],
   providers: [
     AuthService,
