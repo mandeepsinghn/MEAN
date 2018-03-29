@@ -36,7 +36,7 @@
             </div>
             <div class="form-group form-float">
                 <mat-form-field class="example-full-width">
-                    <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" placeholder="Choose a date">
+                    <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker"  placeholder="Subscription Start Date" name="startDate" [(ngModel)]="school.startDate">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
