@@ -5,15 +5,16 @@ import { } from 'googlemaps';
 import {MapsAPILoader} from '@agm/core';
 import {MomentDateAdapter} from '@angular/material-moment-adapter';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+import {ActivatedRoute, Router} from '@angular/router';
 declare var $: any;
 
 
 export const MY_FORMATS = {
     parse: {
-        dateInput: 'LL',
+        dateInput: 'YYYY-MM-DD',
     },
     display: {
-        dateInput: 'LL',
+        dateInput: 'YYYY-MM-DD',
         monthYearLabel: 'MMM YYYY',
         dateA11yLabel: 'LL',
         monthYearA11yLabel: 'MMMM YYYY',
@@ -38,15 +39,19 @@ export class AddSchoolComponent implements OnInit, AfterViewInit {
     public latitude: number;
     public longitude: number;
     public zoom: number;
+    public schoolId: string;
     @ViewChild('search')
         public searchElementRef: ElementRef;
-
-  constructor( private schoolService: SchoolService, private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) {
+ constructor( private schoolService: SchoolService, private mapsAPILoader: MapsAPILoader, private ngZone: NgZone, private route: Router, private route1: ActivatedRoute) {
       this.school = [];
-      const schoolId = '';
+      const schoolId = this.route1.params.subscribe(params => {
+          this.schoolId =  params['id']; // (+) converts string 'id' to a number
+
+          // In a real app: dispatch action to load the details here.
+      });
       // params( 'id' );
       if ( schoolId ) {
-          this.schoolService.getSchool( schoolId );
+          this.schoolService.getSchool( this.schoolId, this);
       }
   }
 
@@ -71,7 +76,6 @@ export class AddSchoolComponent implements OnInit, AfterViewInit {
               this.ngZone.run(() => {
                   // get the place result
                   let place: google.maps.places.PlaceResult = autocomplete.getPlace();
-
                   // verify result
                   if (place.geometry === undefined || place.geometry === null) {
                       return;
@@ -80,6 +84,7 @@ export class AddSchoolComponent implements OnInit, AfterViewInit {
                   // set latitude, longitude and zoom
                   this.latitude = place.geometry.location.lat();
                   this.longitude = place.geometry.location.lng();
+                  this.school.address = place.formatted_address;
                   this.school.latitude = place.geometry.location.lat();
                   this.school.longitude = place.geometry.location.lng();
                   this.zoom = 12;
@@ -108,9 +113,14 @@ export class AddSchoolComponent implements OnInit, AfterViewInit {
           }
       });
   }
+    public setData( data ) {
+        if ( data ) {
+            // console.log(data);
+            this.school = data;
+        }
+    }
   public saveSchool(event) {
-      console.log(this.school);
-      this.schoolService.save(this.school);
+      this.schoolService.save(this.school, this);
       // this.cookieService.put('putting', 'putty');
    }
     private setCurrentPosition() {
@@ -123,5 +133,8 @@ export class AddSchoolComponent implements OnInit, AfterViewInit {
                 this.zoom = 12;
             });
         }
+    }
+    public successredirect() {
+        this.route.navigate(['cpanel/master/school/view-all-schools']);
     }
 }

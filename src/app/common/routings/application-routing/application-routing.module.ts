@@ -14,6 +14,33 @@ import { ProfileComponent } from '../../../user/profile/profile.component';
 import {AddSchoolComponent} from '../../../master/school/create/add-school/add-school.component';
 import { ViewAllSchoolsComponent } from '../../../master/school/read/view-all-schools/view-all-schools.component';
 
+import {AddClassroomComponent} from '../../../master/classroom/create/add-classroom/add-classroom.component';
+import {ViewAllClassroomsComponent} from '../../../master/classroom/read/view-all-classrooms/view-all-classrooms.component';
+
+import {AddParentComponent} from '../../../master/parent/create/add-parent/add-parent.component';
+import {ViewAllParentsComponent} from '../../../master/parent/read/view-all-parents/view-all-parents.component';
+
+import {AddPickupComponent} from '../../../master/pickup/create/add-pickup/add-pickup.component';
+import {ViewAllPickupsComponent} from '../../../master/pickup/read/view-all-pickups/view-all-pickups.component';
+
+import {AddRouteComponent} from '../../../master/route/create/add-route/add-route.component';
+import {ViewAllRoutesComponent} from '../../../master/route/read/view-all-routes/view-all-routes.component';
+
+import {AddStudentComponent} from '../../../master/student/create/add-student/add-student.component';
+import {ViewAllStudentsComponent} from '../../../master/student/read/view-all-students/view-all-students.component';
+
+import {AddSubjectComponent} from '../../../master/subject/create/add-subject/add-subject.component';
+import {ViewAllSubjectsComponent} from '../../../master/subject/read/view-all-subjects/view-all-subjects.component';
+
+import {AddTeacherComponent} from '../../../master/teacher/create/add-teacher/add-teacher.component';
+import {ViewAllTeachersComponent} from '../../../master/teacher/read/view-all-teachers/view-all-teachers.component';
+
+import {AddGatewayComponent} from '../../../master/gateway/create/add-gateway/add-gateway.component';
+import {ViewAllGatewaysComponent} from '../../../master/gateway/read/view-all-gateways/view-all-gateways.component';
+
+import {AddIdcardComponent} from '../../../master/idcard/create/add-idcard/add-idcard.component';
+import {ViewAllIdcardsComponent} from '../../../master/idcard/read/view-all-idcards/view-all-idcards.component';
+
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'cpanel'},
   {
@@ -28,9 +55,116 @@ const routes: Routes = [
           component: AddSchoolComponent
       },
       {
-          path: 'master/school/view-all-schools',
+          path: 'master/school/edit/:id',
+          component: AddSchoolComponent
+      },
+      {
+          path: 'master/school/view-all',
           component: ViewAllSchoolsComponent
       },
+
+        {
+            path: 'master/gateway/add-new',
+            component: AddGatewayComponent
+        },
+        {
+            path: 'master/gateway/edit/:id',
+            component: AddGatewayComponent
+        },
+        {
+            path: 'master/gateway/view-all',
+            component: ViewAllGatewaysComponent
+        },
+
+        {
+            path: 'master/idcard/add-new',
+            component: AddIdcardComponent
+        },
+        {
+            path: 'master/idcard/edit/:id',
+            component: AddIdcardComponent
+        },
+        {
+            path: 'master/idcard/view-all',
+            component: ViewAllIdcardsComponent
+        },
+
+        {
+            path: 'master/classroom/add-new',
+            component: AddClassroomComponent
+        },
+        {
+            path: 'master/classroom/edit/:id',
+            component: AddClassroomComponent
+        },
+        {
+            path: 'master/classroom/view-all',
+            component: ViewAllClassroomsComponent
+        },
+
+        {
+            path: 'master/parent/add-new',
+            component: AddParentComponent
+        },
+        {
+            path: 'master/parent/edit/:id',
+            component: AddParentComponent
+        },
+        {
+            path: 'master/parent/view-all',
+            component: ViewAllParentsComponent
+        },
+
+        {
+            path: 'master/pickup/add-new',
+            component: AddPickupComponent
+        },
+        {
+            path: 'master/pickup/edit/:id',
+            component: AddPickupComponent
+        },
+        {
+            path: 'master/pickup/view-all',
+            component: ViewAllPickupsComponent
+        },
+
+        {
+            path: 'master/route/add-new',
+            component: AddRouteComponent
+        },
+        {
+            path: 'master/route/edit/:id',
+            component: AddRouteComponent
+        },
+        {
+            path: 'master/route/view-all',
+            component: ViewAllRoutesComponent
+        },
+
+        {
+            path: 'master/student/add-new',
+            component: AddStudentComponent
+        },
+        {
+            path: 'master/student/edit/:id',
+            component: AddStudentComponent
+        },
+        {
+            path: 'master/student/view-all',
+            component: ViewAllStudentsComponent
+        },
+        {
+            path: 'master/subject/add-new',
+            component: AddSubjectComponent
+        },
+        {
+            path: 'master/subject/edit/:id',
+            component: AddSubjectComponent
+        },
+        {
+            path: 'master/subject/view-all',
+            component: ViewAllSubjectsComponent
+        },
       {
         path: 'category/add-new',
         component: AddCategoryComponent

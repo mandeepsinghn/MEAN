@@ -12,7 +12,7 @@ export class UserService {
     constructor(private http: HttpClient, private authService: AuthService, private cookieService: CookieService) {
         this.user = [];
         this.userInfo = [];
-        this.isData = this.getLoggedUserData();
+        this.isData = this.getLoggedUserData( );
     }
     public getLoggedUserData(/*_id: String, profileComp: ProfileComponent*/) {
         const obj = this;
@@ -21,6 +21,14 @@ export class UserService {
             responseType: 'json'
         }).subscribe(function (data) {
             obj.setData(data);
+        });
+    }
+    public getUserProfileData(profileComp: ProfileComponent) {
+        const isLogged = this.cookieService.get('loggedUser');
+        this.http.get('/api/users/getDetail.json/' + isLogged, {
+            responseType: 'json'
+        }).subscribe(function (data) {
+            profileComp.setData(data);
         });
     }
     public getUserInfo() {

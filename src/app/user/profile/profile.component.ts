@@ -13,8 +13,9 @@ export class ProfileComponent implements OnInit, AfterViewInit {
   public user: Array<any>;
     public userInfo: Array<any>;
   constructor(private userService: UserService, private cookieService: CookieService, private route: Router) {
-      const data = this.userService.getLoggedUserData();
-      console.log(data);
+      this.user = [];
+      this.userInfo = [];
+      const data = this.userService.getUserProfileData(this);
   }
 
   ngOnInit() {
@@ -42,12 +43,10 @@ export class ProfileComponent implements OnInit, AfterViewInit {
     }
     public setData( data ) {
         if ( data ) {
-            console.log(data);
+            // console.log(data);
             this.user = data;
             this.userInfo = data.userInfo;
-            return data;
         }
-        return false;
     }
     public saveProfile(event) {
         console.log(this.user);

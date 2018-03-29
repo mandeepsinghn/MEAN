@@ -6,13 +6,14 @@ const schoolSchema = new mongoose.Schema({
         isActive: Boolean,
         name: String,
         address: String,
-        lattitude: String,
-        Longitude: String,
+        latitude: String,
+        longitude: String,
         startDate: String,
         endDate: String,
         createdOn: String,
         createdBy: String,
-        modifiedOn: String
+        modifiedOn: String,
+        modifiedBy: String
     },
     {
         minimize: false,
