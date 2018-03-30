@@ -10,12 +10,18 @@ declare var $: any;
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit, AfterViewInit {
-  public user: Array<any>;
-    public userInfo: Array<any>;
+  public user: any;
+  public userInfo: any;
   constructor(private userService: UserService, private cookieService: CookieService, private route: Router) {
       this.user = [];
       this.userInfo = [];
-      const data = this.userService.getUserProfileData(this);
+      this.userService.getUserProfileData().subscribe(response => {
+          if ( response ) {
+              // console.log(data);
+              this.user = response;
+              this.userInfo = response['userInfo'];
+          }
+      });
   }
 
   ngOnInit() {
@@ -41,16 +47,15 @@ export class ProfileComponent implements OnInit, AfterViewInit {
             }
         });
     }
-    public setData( data ) {
-        if ( data ) {
-            // console.log(data);
-            this.user = data;
-            this.userInfo = data.userInfo;
-        }
-    }
     public saveProfile(event) {
         console.log(this.user);
-        this.userService.updateUserData( this.user, this.userInfo );
+        this.userService.updateUserData( this.user, this.userInfo ).subscribe(response => {
+            if ( response ) {
+                // console.log(data);
+                this.user = response;
+                this.userInfo = response['userInfo'];
+            }
+        });
     }
     public updateData(data) {
         if ( data ) {

@@ -29,41 +29,35 @@
             <tr>
               <th>Sr. No.</th>
               <th>Name</th>
-              <th>Address</th>
-              <th>Username</th>
-              <th>IsActive</th>
-              <th>Start Date</th>
-              <th>End Date</th>
+              <th>Location</th>
+              <th>MAC</th>
+              <th>IP</th>
+              <th>Reading Capicity(in Meeters)</th>
+              <th>IsAchtive</th>
               <th>Action</th>
             </tr>
             </thead>
-            <tfoot>
-            <tr>
-              <th>Sr. No.</th>
-              <th>Name</th>
-              <th>Address</th>
-              <th>Username</th>
-              <th>IsActive</th>
-              <th>Start Date</th>
-              <th>End Date</th>
-              <th>Action</th>
-            </tr>
-            </tfoot>
             <tbody>
             <tr *ngFor="let gateway of this.gatewayService.gateways; let i=index">
-              <td>{{i+1}}</td>
+              <td>{{(pageSize* pageIndex)+i+1}}</td>
               <td>{{gateway.name}}</td>
-              <td>{{gateway.address}}</td>
-              <td>{{gateway.username}}</td>
-              <td>{{gateway.isActive?"Active":"Deactive"}}</td>
-              <td>{{gateway.startDate}}</td>
-              <td>{{gateway.endDate}}</td>
+              <td>{{gateway.location}}</td>
+              <td>{{gateway.mac}}</td>
+              <td>{{gateway.ip}}</td>
+              <td>{{gateway.readingDistance}}</td>
+              <td>{{gateway.endDate?"Active":"Deactive"}}</td>
               <td><a [routerLink]="['../edit/', gateway._id]"><i _ngcontent-c2="" class="material-icons">edit</i> </a>   <a (click)='deleteGateway( [gateway._id] )'><i _ngcontent-c2="" class="material-icons">delete</i> </a></td>
 
             </tr>
             </tbody>
           </table>
         </div>
+        <mat-paginator [length]="pages"
+                       [pageIndex]="pageIndex"
+                       [pageSize]="pageSize"
+                       [pageSizeOptions]="pageSizeOptions"
+                       (page)="pageEvent = setPageData($event)">
+        </mat-paginator>
       </div>
     </div>
   </div>

@@ -2,47 +2,37 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { AuthService } from '../../auth/auth.service';
 import {Router} from '@angular/router';
-import {AddSchoolComponent} from './create/add-school/add-school.component';
-import {ViewAllSchoolsComponent} from './read/view-all-schools/view-all-schools.component';
+import {map} from 'rxjs/operators';
 @Injectable()
 export class SchoolService {
-    public schools: any;
-    public school: any;
     constructor(private http: HttpClient, private authService: AuthService, private route: Router) {
     }
-    public getSchools() {
+    public getSchools(p: number, ps: number) {
         const obj = this;
-        this.http.get('/api/schools.json/', {
+        return this.http.get('/api/schools.json/' + p + '/' + ps, {
             responseType: 'json'
-        }).subscribe(function (data) {
-            obj.setData(data, 'schools');
-        });
+        }).pipe(
+            map(res =>  res)
+        );
     }
-    public setData(data, stData: string) {
-        this[stData] = data;
-        return true;
-    }
-    public getSchool(id: string, comp: any) {
+
+    public getSchool(id: string) {
         const obj = this;
-        this.http.get('/api/schools/view.json/' + id, {
+        return this.http.get('/api/schools/view.json/' + id, {
             responseType: 'json'
-        }).subscribe(function (data) {
-            comp.setData(data);
-            obj.setData(data, 'school');
-        });
+        }).pipe(
+            map(res =>  res)
+        );
     }
-    public delete(id: string, view: ViewAllSchoolsComponent) {
+    public delete(id: string) {
         const obj = this;
-        this.http.get('/api/schools/delete.json/' + id, {
+        return this.http.get('/api/schools/delete.json/' + id, {
             responseType: 'json'
-        }).subscribe(function (data) {
-            const rs = obj.setData(data, 'schools');
-            if (rs) {
-                view.listRedirect();
-            }
-        });
+        }).pipe(
+            map(res =>  res)
+        );
     }
-    public save(data: Array<any>, addSchoolComp: AddSchoolComponent) {
+    public save(data) {
         console.log(data);
         const obj = this;
         let url = '/api/schools/add.json';
@@ -58,8 +48,8 @@ export class SchoolService {
                     address: data['address'],
                     latitude: data['latitude'],
                     longitude: data['longitude'],
-                    startDate: data['startDate']._i,
-                    endDate: data['endDate']._i,
+                    startDate: new Date(typeof data['startDate'] === 'object' ? data['startDate']._d : data['startDate']),
+                    endDate: new Date(typeof data['endDate'] === 'object' ? data['endDate']._d : data['endDate']),
                     modifiedOn: new Date(),
                     modifiedBy: this.authService.loggedId
                 }
@@ -73,17 +63,15 @@ export class SchoolService {
                     address: data['address'],
                     latitude: data['latitude'],
                     longitude: data['longitude'],
-                    startDate: data['startDate']._i,
-                    endDate: data['endDate']._i,
+                    startDate: new Date(typeof data['startDate'] === 'object' ? data['startDate']._d : data['startDate']),
+                    endDate: new Date(typeof data['endDate'] === 'object' ? data['endDate']._d : data['endDate']),
                     createdOn: new Date(),
                     createdBy: this.authService.loggedId
                 }
             };
         }
-        this.http.post(url, param).subscribe(function ( data1 ) {
-            if (data1) {
-                addSchoolComp.successredirect();
-            }
-        });
+        return this.http.post(url, param).pipe(
+            map(res =>  res)
+        );
     }
 }

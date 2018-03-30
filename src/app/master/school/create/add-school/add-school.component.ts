@@ -51,7 +51,9 @@ export class AddSchoolComponent implements OnInit, AfterViewInit {
       });
       // params( 'id' );
       if ( schoolId ) {
-          this.schoolService.getSchool( this.schoolId, this);
+          this.schoolService.getSchool( this.schoolId).subscribe(response => {
+              this.school = response;
+          });
       }
   }
 
@@ -120,7 +122,10 @@ export class AddSchoolComponent implements OnInit, AfterViewInit {
         }
     }
   public saveSchool(event) {
-      this.schoolService.save(this.school, this);
+      this.schoolService.save(this.school).subscribe(response => {
+          this.school = response;
+          this.route.navigate(['cpanel/master/school/view-all']);
+      });
       // this.cookieService.put('putting', 'putty');
    }
     private setCurrentPosition() {
@@ -133,8 +138,5 @@ export class AddSchoolComponent implements OnInit, AfterViewInit {
                 this.zoom = 12;
             });
         }
-    }
-    public successredirect() {
-        this.route.navigate(['cpanel/master/school/view-all-schools']);
     }
 }

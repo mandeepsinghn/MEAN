@@ -28,42 +28,37 @@
             <thead>
             <tr>
               <th>Sr. No.</th>
-              <th>Name</th>
-              <th>Address</th>
-              <th>Username</th>
+              <th>MAC</th>
+              <th>UUID</th>
+              <th>Major</th>
+              <th>Minor</th>
               <th>IsActive</th>
-              <th>Start Date</th>
-              <th>End Date</th>
               <th>Action</th>
             </tr>
             </thead>
-            <tfoot>
-            <tr>
-              <th>Sr. No.</th>
-              <th>Name</th>
-              <th>Address</th>
-              <th>Username</th>
-              <th>IsActive</th>
-              <th>Start Date</th>
-              <th>End Date</th>
-              <th>Action</th>
-            </tr>
-            </tfoot>
             <tbody>
-            <tr *ngFor="let idcard of this.idcardService.idcards; let i=index">
-              <td>{{i+1}}</td>
-              <td>{{idcard.name}}</td>
-              <td>{{idcard.address}}</td>
-              <td>{{idcard.username}}</td>
+            <tr *ngFor="let idcard of idcards; let i=index">
+              <td>{{(pageSize* pageIndex)+i+1}}</td>
+              <td>{{idcard.mac}}</td>
+              <td>{{idcard.uuid}}</td>
+              <td>{{idcard.major}}</td>
+              <td>{{idcard.minor}}</td>
               <td>{{idcard.isActive?"Active":"Deactive"}}</td>
-              <td>{{idcard.startDate}}</td>
-              <td>{{idcard.endDate}}</td>
-              <td><a [routerLink]="['../edit/', idcard._id]"><i _ngcontent-c2="" class="material-icons">edit</i> </a>   <a (click)='deleteIdcard( [idcard._id] )'><i _ngcontent-c2="" class="material-icons">delete</i> </a></td>
+              <td>
+                  <a [routerLink]="['../edit/', idcard._id]"><i _ngcontent-c2="" class="material-icons">edit</i> </a>
+                  <a (click)='deleteIdcard( [idcard._id] )' class="delete"><i _ngcontent-c2="" class="material-icons">delete</i> </a>
+              </td>
 
             </tr>
             </tbody>
           </table>
         </div>
+          <mat-paginator [length]="pages"
+                         [pageIndex]="pageIndex"
+                         [pageSize]="pageSize"
+                         [pageSizeOptions]="pageSizeOptions"
+                         (page)="pageEvent = setPageData($event)">
+          </mat-paginator>
       </div>
     </div>
   </div>

@@ -2,47 +2,35 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { AuthService } from '../../auth/auth.service';
 import {Router} from '@angular/router';
-import {AddGatewayComponent} from './create/add-gateway/add-gateway.component';
-import {ViewAllGatewaysComponent} from './read/view-all-gateways/view-all-gateways.component';
+import {map} from 'rxjs/operators';
 @Injectable()
 export class GatewayService {
-    public gateways: any;
-    public gateway: any;
     constructor(private http: HttpClient, private authService: AuthService, private route: Router) {
     }
-    public getGateways() {
-        const obj = this;
-        this.http.get('/api/gateways.json/', {
+    public getGateways(p: number, ps: number) {
+        return this.http.get('/api/gateways.json/' + p + '/' + ps, {
             responseType: 'json'
-        }).subscribe(function (data) {
-            obj.setData(data, 'gateways');
-        });
+        }).pipe(
+            map(res =>  res)
+        );
     }
-    public setData(data, stData: string) {
-        this[stData] = data;
-        return true;
-    }
-    public getGateway(id: string, comp: any) {
+    public getGateway(id: string) {
         const obj = this;
-        this.http.get('/api/gateways/view.json/' + id, {
+        return this.http.get('/api/gateways/view.json/' + id, {
             responseType: 'json'
-        }).subscribe(function (data) {
-            comp.setData(data);
-            obj.setData(data, 'gateway');
-        });
+        }).pipe(
+            map(res =>  res)
+        );
     }
-    public delete(id: string, view: ViewAllGatewaysComponent) {
+    public delete(id: string) {
         const obj = this;
-        this.http.get('/api/gateways/delete.json/' + id, {
+        return this.http.get('/api/gateways/delete.json/' + id, {
             responseType: 'json'
-        }).subscribe(function (data) {
-            const rs = obj.setData(data, 'gateways');
-            if (rs) {
-                view.listRedirect();
-            }
-        });
+        }).pipe(
+            map(res =>  res)
+        );
     }
-    public save(data: Array<any>, addGatewayComp: AddGatewayComponent) {
+    public save(data: any) {
         console.log(data);
         const obj = this;
         let url = '/api/gateways/add.json';
@@ -54,12 +42,14 @@ export class GatewayService {
                 gateway: {
                     _id: data['_id'],
                     name: data['name'],
-                    password: data['password'],
-                    address: data['address'],
-                    latitude: data['latitude'],
-                    longitude: data['longitude'],
-                    startDate: data['startDate']._i,
-                    endDate: data['endDate']._i,
+                    location: data['location'],
+                    mac: data['mac'],
+                    ip: data['ip'],
+                    wifiname: data['wifiname'],
+                    wifiPassword: data['wifiPassword'],
+                    gatewayUsername: data['gatewayUsername'],
+                    gatewayPassword: data['gatewayPassword'],
+                    readingDistance: data['readingDistance'],
                     modifiedOn: new Date(),
                     modifiedBy: this.authService.loggedId
                 }
@@ -69,21 +59,21 @@ export class GatewayService {
                 responseType: 'json',
                 gateway: {
                     name: data['name'],
-                    password: data['password'],
-                    address: data['address'],
-                    latitude: data['latitude'],
-                    longitude: data['longitude'],
-                    startDate: data['startDate']._i,
-                    endDate: data['endDate']._i,
+                    location: data['location'],
+                    mac: data['mac'],
+                    ip: data['ip'],
+                    wifiname: data['wifiname'],
+                    wifiPassword: data['wifiPassword'],
+                    gatewayUsername: data['gatewayUsername'],
+                    gatewayPassword: data['gatewayPassword'],
+                    readingDistance: data['readingDistance'],
                     createdOn: new Date(),
                     createdBy: this.authService.loggedId
                 }
             };
         }
-        this.http.post(url, param).subscribe(function ( data1 ) {
-            if (data1) {
-                addGatewayComp.successredirect();
-            }
-        });
+        return this.http.post(url, param).pipe(
+            map(res =>  res)
+        );
     }
 }

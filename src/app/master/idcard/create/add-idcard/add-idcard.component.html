@@ -16,40 +16,26 @@
 
           <div class="form-group form-float">
             <mat-input-container>
-              <input matInput="" placeholder="Idcard Name" name="name" [(ngModel)]="idcard.name"  required >
+              <input matInput="" placeholder="Idcard MAC" name="mac" [(ngModel)]="idcard.mac"  required >
             </mat-input-container>
           </div>
           <div class="form-group form-float">
             <mat-input-container>
-              <input matInput="" type="password" placeholder="Password" name="password" [(ngModel)]="idcard.password"  required>
+              <input matInput="" placeholder="Idcard UUID" name="uuid" [(ngModel)]="idcard.uuid"  required >
             </mat-input-container>
           </div>
           <div class="form-group form-float">
             <mat-input-container>
-              <input matInput="" placeholder="Idcard Address" autocomplete="off" name="address" autocapitalize="off" spellcheck="off" #search [(ngModel)]="idcard.address"  required>
+              <input matInput="" placeholder="Idcard Major" name="major" [(ngModel)]="idcard.major"  required >
             </mat-input-container>
           </div>
-            <div class="form-group form-float">
-                <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false"  [draggable]="true" [zoom]="zoom">
-                    <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
-                </agm-map>
-            </div>
-            <div class="form-group form-float">
-                <mat-form-field class="example-full-width">
-                    <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker"  placeholder="Subscription Start Date" name="startDate" [(ngModel)]="idcard.startDate">
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                </mat-form-field>
-            </div>
           <div class="form-group form-float">
-            <mat-form-field class="example-full-width">
-              <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker1"  placeholder="Subscription Start Date"  name="endDate" [(ngModel)]="idcard.endDate" >
-              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-              <mat-datepicker #picker1></mat-datepicker>
-            </mat-form-field>
+            <mat-input-container>
+              <input matInput="" placeholder="Idcard Minor" name="minor" [(ngModel)]="idcard.minor"  required >
+            </mat-input-container>
           </div>
 
-          <button class="btn btn-primary waves-effect" type="submit">SAVE SCHOOL</button>
+          <button class="btn btn-primary waves-effect" type="submit">SAVE IDCARD</button>
         </form>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {LoginComponent} from './login/login.component';
 import {CookieService} from 'angular2-cookie/core';
+import {map} from 'rxjs/operators';
 
 @Injectable()
 export class AuthService {
@@ -18,14 +18,14 @@ export class AuthService {
           this.loggedId = false;
       }
    }
-   public login(username: String, password: String, loginComp: LoginComponent) {
-      this.http.post('/api/users/login.json', {
+   public login(username: String, password: String) {
+      return this.http.post('/api/users/login.json', {
           responseType: 'json',
           username: username,
           password: password
-       }).subscribe(function (data) {
-           loginComp.successRedirect(data);
-       });
+       }).pipe(
+          map(res =>  res)
+      );
    }
 
 }

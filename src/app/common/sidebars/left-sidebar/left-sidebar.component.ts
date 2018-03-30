@@ -7,14 +7,22 @@ import {UserService} from '../../../user/user.service';
   styleUrls: ['./left-sidebar.component.css']
 })
 export class LeftSidebarComponent implements OnInit, AfterViewInit {
-  public userInfo: any;
+  public Name: any;
+  public userEmail: any;
   constructor(private userService: UserService) {
-    this.userService.getLoggedUserData();
+    this.userService.getLoggedUserData().subscribe(response => {
+        if ( response ) {
+            // console.log(data);
+            this.Name = response['userInfo']['firstName']
+                + ' ' + ( response['userInfo']['middleName'] ? response['userInfo']['middleName'] + ' ' : '')
+                + response['userInfo']['lastName'];
+            this.userEmail = response['userInfo']['email'];
+        }
+    });
   }
 
   ngOnInit() {
   }
   ngAfterViewInit() {
-      //console.log(this);
   }
 }

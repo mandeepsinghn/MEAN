@@ -53,7 +53,8 @@ import {
     MatTooltipModule,
     MatCheckboxModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatPaginatorModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
@@ -111,6 +112,7 @@ import {AgmCoreModule} from '@agm/core';
       MatCheckboxModule,
       MatDatepickerModule,
       MatNativeDateModule,
+      MatPaginatorModule,
       FormsModule,
       AgmCoreModule.forRoot({
           apiKey: 'AIzaSyCewgd_uWWVfRe8OurbMguxE3BABXONUfg',
@@ -125,7 +127,8 @@ import {AgmCoreModule} from '@agm/core';
         BrowserAnimationsModule,
         MatCheckboxModule,
         MatDatepickerModule,
-        MatNativeDateModule
+        MatNativeDateModule,
+        MatPaginatorModule
    ],
   providers: [
     AuthService,

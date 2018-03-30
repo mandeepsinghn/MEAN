@@ -38,7 +38,7 @@
             </tr>
             </thead>
             <tfoot>
-            <tr>
+           <!-- <tr>
               <th>Sr. No.</th>
               <th>Name</th>
               <th>Address</th>
@@ -48,10 +48,10 @@
               <th>End Date</th>
               <th>Action</th>
             </tr>
-            </tfoot>
+            </tfoot>-->
             <tbody>
-            <tr *ngFor="let school of this.schoolService.schools; let i=index">
-              <td>{{i+1}}</td>
+            <tr *ngFor="let school of schools; let i=index">
+              <td>{{(pageSize* pageIndex)+i+1}}</td>
               <td>{{school.name}}</td>
               <td>{{school.address}}</td>
               <td>{{school.username}}</td>
@@ -64,6 +64,12 @@
             </tbody>
           </table>
         </div>
+        <mat-paginator [length]="pages"
+                       [pageIndex]="pageIndex"
+                       [pageSize]="pageSize"
+                       [pageSizeOptions]="pageSizeOptions"
+                       (page)="pageEvent = setPageData($event)">
+        </mat-paginator>
       </div>
     </div>
   </div>

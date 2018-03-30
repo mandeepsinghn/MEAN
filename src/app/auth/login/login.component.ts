@@ -22,15 +22,17 @@ export class LoginComponent implements OnInit, AfterViewInit {
   stopDefaultSubmit() { return false; }
   submitLogin(username: string, password: string) {
     if ($('#sign_in').valid()) {
-      this.authService.login(username, password, this);
+      this.authService.login(username, password).subscribe( response => {
+          if ( response) {
+              console.log(response);
+              if ('_id' in  response) {
+                  this.authService.isLoggedIn = true;
+                  this.cookieService.put('loggedUser', response['_id']);
+                  this.route.navigate(['cpanel']);
+              }
+          }
+      });
       // this.cookieService.put('putting', 'putty');
     }
-  }
-  public successRedirect(  data ) {
-      if ( data ) {
-          this.authService.isLoggedIn = true;
-          this.cookieService.put('loggedUser', data._id);
-          this.route.navigate(['cpanel']);
-      }
   }
 }
