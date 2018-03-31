@@ -27,28 +27,25 @@
                   class="table table-bordered table-striped table-hover dataTable js-exportable">
             <thead>
             <tr>
-              <th>Sr. No.</th>
+              <!--<th>Sr. No.</th>
               <th>Name</th>
               <th>Address</th>
               <th>Username</th>
               <th>IsActive</th>
               <th>Start Date</th>
               <th>End Date</th>
-              <th>Action</th>
+              <th>Action</th>-->
+              <th *ngFor="let c of columns" [class.address-th]="c.key =='address'">
+                <div *ngIf="c.isSortable" (click)="SortBy(c.key)" >
+                  {{ c.title }}
+                  <i *ngIf="query.sortBy === c.key" class="material-icons">{{query.isSortAscending === -1 ?  'keyboard_arrow_down' : 'keyboard_arrow_up'}}</i>
+                </div>
+                <div *ngIf="!c.isSortable">
+                  {{ c.title }}
+                </div>
+              </th>
             </tr>
             </thead>
-            <tfoot>
-           <!-- <tr>
-              <th>Sr. No.</th>
-              <th>Name</th>
-              <th>Address</th>
-              <th>Username</th>
-              <th>IsActive</th>
-              <th>Start Date</th>
-              <th>End Date</th>
-              <th>Action</th>
-            </tr>
-            </tfoot>-->
             <tbody>
             <tr *ngFor="let school of schools; let i=index">
               <td>{{(pageSize* pageIndex)+i+1}}</td>
@@ -56,8 +53,8 @@
               <td>{{school.address}}</td>
               <td>{{school.username}}</td>
               <td>{{school.isActive?"Active":"Deactive"}}</td>
-              <td>{{school.startDate}}</td>
-              <td>{{school.endDate}}</td>
+              <td>{{school.startDate | date: 'dd-MM-yyyy'}}</td>
+              <td>{{school.endDate | date: 'dd-MM-yyyy'}}</td>
               <td><a [routerLink]="['../edit/', school._id]"><i _ngcontent-c2="" class="material-icons">edit</i> </a>   <a (click)='deleteSchool( [school._id] )'><i _ngcontent-c2="" class="material-icons">delete</i> </a></td>
 
             </tr>

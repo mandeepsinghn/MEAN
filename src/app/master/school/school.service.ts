@@ -7,9 +7,9 @@ import {map} from 'rxjs/operators';
 export class SchoolService {
     constructor(private http: HttpClient, private authService: AuthService, private route: Router) {
     }
-    public getSchools(p: number, ps: number) {
+    public getSchools(p: number, ps: number, sort: any) {
         const obj = this;
-        return this.http.get('/api/schools.json/' + p + '/' + ps, {
+        return this.http.get('/api/schools.json/' + p + '/' + ps + '/' + sort.sortBy + '/' + sort.isSortAscending, {
             responseType: 'json'
         }).pipe(
             map(res =>  res)
@@ -44,6 +44,7 @@ export class SchoolService {
                 school: {
                     _id: data['_id'],
                     name: data['name'],
+                    username: data['username'],
                     password: data['password'],
                     address: data['address'],
                     latitude: data['latitude'],
@@ -59,6 +60,7 @@ export class SchoolService {
                 responseType: 'json',
                 school: {
                     name: data['name'],
+                    username: data['username'],
                     password: data['password'],
                     address: data['address'],
                     latitude: data['latitude'],

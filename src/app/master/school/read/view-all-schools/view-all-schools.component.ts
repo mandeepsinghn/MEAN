@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {PageEvent} from '@angular/material';
 declare var $: any;
 
+
 @Component({
   selector: 'app-view-all-schools',
   templateUrl: './view-all-schools.component.html',
@@ -15,8 +16,22 @@ export class ViewAllSchoolsComponent implements OnInit, AfterViewInit {
   public pageIndex = 0;
   public pageSize = 5;
   public pageSizeOptions = [5, 10, 25, 100];
+  public columns = [
+      { key: 'sn', title: 'S. No.', isSortable: false },
+      { key: 'name', title: 'Name', isSortable: true },
+      { key: 'address', title: 'Address', isSortable: true},
+      { key: 'username', title: 'Username', isSortable: true},
+      { key: 'isActive', title: 'IsActive', isSortable: true},
+      { key: 'startDate', title: 'Start Date', isSortable: true},
+      { key: 'endDate', title: 'End Date', isSortable: true},
+      { key: 'action', title: 'Action', isSortable: false}
+  ];
+  public query = {
+      sortBy: 'name',
+      isSortAscending: 1
+  };
   constructor(private schoolService: SchoolService, private route: Router) {
-    this.schoolService.getSchools(this.pageIndex, this.pageSize).subscribe(response => {
+    this.schoolService.getSchools(this.pageIndex, this.pageSize, this.query).subscribe(response => {
         this.schools = response['data'];
         this.pages = Math.ceil(response['total'] / this.pageSize);
     });
@@ -37,7 +52,15 @@ export class ViewAllSchoolsComponent implements OnInit, AfterViewInit {
         console.log( event );
         this.pageIndex = event.pageIndex;
         this.pageSize = event.pageSize;
-        this.schoolService.getSchools(this.pageIndex, this.pageSize).subscribe(response => {
+        this.schoolService.getSchools(this.pageIndex, this.pageSize, this.query).subscribe(response => {
+            this.schools = response['data'];
+            this.pages = Math.ceil(response['total'] / this.pageSize);
+        });
+    }
+    public SortBy(sortKey: string) {
+      this.query.sortBy = sortKey;
+      this.query.isSortAscending = this.query.isSortAscending === -1 ? 1 : -1;
+        this.schoolService.getSchools(this.pageIndex, this.pageSize, this.query).subscribe(response => {
             this.schools = response['data'];
             this.pages = Math.ceil(response['total'] / this.pageSize);
         });

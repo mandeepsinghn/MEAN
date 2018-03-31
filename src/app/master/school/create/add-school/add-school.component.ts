@@ -50,7 +50,7 @@ export class AddSchoolComponent implements OnInit, AfterViewInit {
           // In a real app: dispatch action to load the details here.
       });
       // params( 'id' );
-      if ( schoolId ) {
+      if (typeof this.schoolId !== 'undefined') {
           this.schoolService.getSchool( this.schoolId).subscribe(response => {
               this.school = response;
           });

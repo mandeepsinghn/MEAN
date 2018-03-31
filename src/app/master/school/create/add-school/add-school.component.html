@@ -21,6 +21,11 @@
           </div>
           <div class="form-group form-float">
             <mat-input-container>
+              <input matInput="" placeholder="School Username" name="username" [(ngModel)]="school.username"  required >
+            </mat-input-container>
+          </div>
+          <div class="form-group form-float">
+            <mat-input-container>
               <input matInput="" type="password" placeholder="Password" name="password" [(ngModel)]="school.password" ng-required="school" >
             </mat-input-container>
           </div>
